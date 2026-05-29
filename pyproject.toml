@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "petri"
+version = "0.1.0"
+description = "A sandbox runtime for safely running untrusted, AI-generated Python code."
+authors = ["Arun Raghunath"]
+packages = [{ include = "petri", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.15.15,<0.16.0)",
+    "mypy (>=2.1.0,<3.0.0)",
+    "pytest (>=9.0.3,<10.0.0)"
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+show_error_codes = true
+pretty = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
